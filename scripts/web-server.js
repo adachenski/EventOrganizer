@@ -1,9 +1,16 @@
 var express = require('express'),
     path = require('path'),
+    events = require('./controllers/eventsController'),
     app= express(),
-    roothpath = path.normalize(__dirname+'/../');
+    rootPath = path.normalize(__dirname+'/../'),
+    bodyParser = require('body-parser');
 
-app.use(express.static(roothpath+'/app'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(express.static(rootPath+'/app'));
+
+app.get('/data/event/:id',events.get);
+app.post('/data/event/:id',events.save);
 
 app.listen(8000);
 
