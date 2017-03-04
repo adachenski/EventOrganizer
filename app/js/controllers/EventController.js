@@ -4,7 +4,7 @@
 
 'use strict';
 
-eventsApp.controller('EventController', function ($scope, eventDataService, $log) {
+eventsApp.controller('EventController', function ($scope, eventDataService, $anchorScroll, $log) {
 
     $scope.boolValue = true;
     $scope.snippet = '<span style="color: red">Hi from snippet</span>';
@@ -48,6 +48,11 @@ eventsApp.controller('EventController', function ($scope, eventDataService, $log
 
     $scope.voteDownSession = function (session) {
         session.upVoteCount--;
-    }
+    };
+
+    $scope.scrollToSessions = function(){
+
+        $anchorScroll();
+    };
 
 });

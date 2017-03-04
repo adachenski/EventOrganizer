@@ -27,7 +27,7 @@ eventsApp.factory('eventDataService',function($resource, $http, $log){
 
     //Method 3 using $resource
 
-    var resource = $resource('/data/event/:id', {id:'@id'}, {"getAll": {method: "GET", isArray: true, params: {something: "foo"}}});
+    var resource = $resource('/data/event/:id', {id:'@id'});
     return{
         getEvent:function(){
             return resource.get({id:1});
