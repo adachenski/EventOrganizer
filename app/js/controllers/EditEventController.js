@@ -12,7 +12,9 @@ eventsApp.controller('EditEventController', function($scope, eventDataService){
         if(newEventForm.$valid) {
             eventDataService.save(event)
                 .$promise
-                .then(function(response) { console.log('success', response)})
+                .then(function(response) {
+                    console.log(response)
+                })
                 .catch(function(response) { console.log('failure', response)});
         }
     };
