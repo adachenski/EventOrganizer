@@ -18,8 +18,12 @@ eventsApp.controller('EventController', function ($scope, $anchorScroll, $routeP
     console.log($route.current.params.foo);
 
     console.log($route.current.params.eventId);
+
     //Method 3 using $resource variant 1
-    $scope.event = eventDataService.getEvent($routeParams.eventId);
+    //$scope.event = eventDataService.getEvent($routeParams.eventId);
+
+    //Method 5 retreaving the data from resolve property from the $routeProvider config file
+    $scope.event = $route.current.locals.event;
 
     $scope.voteUpSession = function (session) {
         session.upVoteCount++;

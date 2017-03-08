@@ -16,7 +16,19 @@ var eventsApp = angular.module('eventsApp', ['ngResource','ngRoute'])
             .when('/event/:eventId',{
                 foo:'barbie',
                 templateUrl:'templates/EventDetails.html',
-                controller:'EventController'
+                controller:'EventController',
+                //Adding resolve property to our route in case we need to visualize
+                // the page after we get the all the ajax response.
+                resolve: {
+                    event: function($route, eventDataService){
+                        return eventDataService.getEvent($route.current.pathParams.eventId).$promise;
+                    }
+                }
+            });
+        $routeProvider
+            .when('/edit-profile',{
+                templateUrl:'templates/EditProfile.html',
+                controller:'EditProfileController'
             });
         $routeProvider
             .otherwise({redirectTo:'events'});
