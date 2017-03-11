@@ -31,6 +31,11 @@ var eventsApp = angular.module('eventsApp', ['ngResource','ngRoute'])
                 controller:'EditProfileController'
             });
         $routeProvider
+            .when('/directive-sample',{
+               templateUrl:'templates/DirectiveSample.html',
+                controller:'DirectiveSampleController'
+            });
+        $routeProvider
             .otherwise({redirectTo:'events'});
         $locationProvider.html5Mode(true);
     });
